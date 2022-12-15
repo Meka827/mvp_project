@@ -3,6 +3,7 @@ import postgres from "postgres";
 import nodemon from "nodemon";
 import cors from "cors";
 
+// console.log(process.env.DATABASE_URL )
 const sql = postgres(process.env.DATABASE_URL);
 
 const app = express();
@@ -10,8 +11,6 @@ const app = express();
 app.use(express.json());
 app.use(express.static("./client"));
 app.use(cors()); 
-
-
 
 app.get("/patients", (req, res) => {
     sql`SELECT * FROM patients`.then((results) => {
@@ -33,8 +32,7 @@ app.get("/patients/:id", (req, res) => {
         };
     })
 
-    
-    
+
 });
 
 app.post("/patients", (req, res) => {
