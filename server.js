@@ -3,7 +3,7 @@ import postgres from "postgres";
 import nodemon from "nodemon";
 import cors from "cors";
 
-const sql = postgres("postgres://med_portal_user:QryKjvkfjZ9XKeQmRweV8d1BEq40as9o@dpg-cedo02kgqg43c91nvgtg-a.oregon-postgres.render.com/med_portal?ssl=true");
+const sql = postgres(process.env.DATABASE_URL);
 
 const app = express();
 
