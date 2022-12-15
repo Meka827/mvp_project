@@ -32,6 +32,8 @@ app.get("/patients/:id", (req, res) => {
             res.send("Not Found");
         };
     })
+
+    
     
 });
 
