@@ -1,34 +1,45 @@
 DROP TABLE IF EXISTS patients;
-DROP TABLE IF EXISTS BMI;
+DROP TABLE IF EXISTS providers;
+DROP TABLE IF EXISTS screens;
 
 
 CREATE TABLE patients (
-    id SERIAL,
-    name TEXT,
-    DOB date,
-    height_in int,
-    weight_lbs int
+    id SERIAL NOT NULL PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    date_of_birth date NOT NULL,
+    username varCHar,
+    password varCHar
 );
 
-INSERT INTO patients (name, DOB, height_in, weight_lbs) VALUES ('Ryan Reynolds', '1976-10-23', 74, 190);
-INSERT INTO patients (name, DOB, height_in, weight_lbs) VALUES ('Blake Lively', '1987-08-25', 70, 140);
+CREATE TABLE providers (
+    id SERIAL NOT NULL PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name Text NOT NULL,
+    username varCHar,
+    password varCHar
+);
 
--- {
---     id: 6,
---     name: 'Tom Hardy',
---     dob: 1977-09-15T00:00:00.000Z,
---     height_in: 79,
---     weight_lbs: 200
---   }
+CREATE TABLE screens (
+    id SERIAL NOT NULL PRIMARY KEY,
+    date date NOT NULL,
+    patient_id INTEGER,
+    height INTEGER,
+    weight INTEGER,
+    provider_id INT NOT NULL
+);
 
+ALTER TABLE screens
+ADD FOREIGN KEY (patient_id) REFERENCES patients(id);
+ALTER TABLE screens
+ADD FOREIGN KEY (provider_id) REFERENCES providers(id);
 
--- CREATE TABLE BMI (
+INSERT INTO patients (first_name, last_name, date_of_birth, username, password) VALUES ('michelle', 'obama', '1969-12-23', 'michelle.obama', 'obama69');
+INSERT INTO providers (first_name, last_name, username, password) VALUES ('franklin', 'stein', '1689-10-31', 'monster31');
+INSERT INTO screens (date, patient_id, height, weight, provider_id) VALUES ('2022-12-12', 1, 65, 150, 1);
+
+-- CREATE TABLE providers (
 --     id SERIAL,
---     date date,
---     patient_id int,
---     bmi int,
---     PRIMARY KEY (id),
---     FOREIGN KEY (patient_id) REFERENCES patients(id)
 -- );
 
 -- INSERT INTO BMI (date, patient_id, bmi, lean) VALUES (2022-12-14, 1, 10);
