@@ -29,10 +29,10 @@ CREATE TABLE screens (
     provider_id INT NOT NULL
 );
 
-ALTER TABLE screens
-ADD FOREIGN KEY (patient_id) REFERENCES patients(id);
-ALTER TABLE screens
-ADD FOREIGN KEY (provider_id) REFERENCES providers(id);
+-- ALTER TABLE screens
+-- ADD FOREIGN KEY (patient_id) REFERENCES patients(id);
+-- ALTER TABLE screens
+-- ADD FOREIGN KEY (provider_id) REFERENCES providers(id);
 
 INSERT INTO patients (first_name, last_name, date_of_birth, username, password) VALUES ('michelle', 'obama', '1969-12-23', 'michelle.obama', 'obama69');
 INSERT INTO providers (first_name, last_name, username, password) VALUES ('franklin', 'stein', '1689-10-31', 'monster31');
