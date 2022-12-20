@@ -1,0 +1,131 @@
+body {
+    background-image: linear-gradient(45deg, transparent 20%, white 25%, transparent 25%),
+        linear-gradient(-45deg, transparent 20%, white 25%, transparent 25%),
+        linear-gradient(-45deg, transparent 75%, white 80%, transparent 0),
+        radial-gradient(gray 2px, transparent 0);
+    background-size: 30px 30px, 30px 30px;
+    background-color: black;
+    margin-top: 0%;
+
+}
+    
+
+.background {
+    background-color: black;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 0;
+    padding-top: 30px;
+    text-align: center;
+}
+
+  
+nav {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+}
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: .2em 2em;
+    float: right;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin: 0;
+    padding: .2em .7em;
+  }
+  
+  nav a {
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+    font-family: Ubuntu;
+    font-size: 1.30em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    transition: .25s ease-in-out;
+  }
+  
+  nav a:hover {
+    color: rgb(220, 120, 0);
+  }
+  
+  .nav-bg {
+    content: '';
+    position: absolute;
+    display: block;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: rgb(50, 50, 50);
+    transition: .45s ease-in-out;
+    margin: 0;
+  }
+  
+  .bg-hidden {
+    top: -100%;
+    opacity: 0;
+  }
+  
+  .bg-visible {
+    top: 0;
+    opacity: 1;
+  }
+  
+  h1 {
+    text-align: center;
+    font-family: Ubuntu;
+    letter-spacing: 1px;
+  }
+  
+  .hero {
+    /* position: relative; */
+    width: 100%;
+    height: 500px;
+    background: rgb(50, 50, 50);
+    background: url(/client/images/getty_962094932_385032.jpg) no-repeat 50% 50% fixed;
+    background-size: 130%;
+    overflow: hidden;
+    margin-left: 0;
+  }
+  
+  .hero h1 {
+    position: relative;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding: .3em;
+    font-size: 4em;
+    font-weight: lighter;
+  }
+  
+  .content-wrapper {
+    width: 80%;
+    height: 3000px;
+    background-color: black;
+    margin-left: 10%;
+    margin-right: 20%;
+
+  }
+  
+  .content-wrapper h1 {
+    margin: 0;
+    padding-top: 30px;
+    color: rgb(243, 135, 149);
+  }
+  
+  .content-wrapper p {
+    font-family: "Open Sans";
+    text-indent: 1.5em;
+    color: white;
+    padding: 3%;
+  }
