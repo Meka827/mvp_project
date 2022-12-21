@@ -9,11 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand mb-0 h1 text-dark" href="/client/index.html">Blue Amber Health Center</a>
+       <a class="btn btn-info" href="/client/provider/provider_login.html" role="button">I am a Provider</a>
+  </nav>
     <section class="h-100 gradient-form" style="background-color: #eee;">
-        <h1><a href="/index.html" >Blue Amber Health Center</a></h1>
-        <button class="provider"><a href="/provider/provider_login.html" >I am a Provider</a></button>
-        <div class="container py-5 h-100">
+      <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
               <div class="card rounded-3 text-black">
@@ -47,9 +48,10 @@
                         </div>
       
                       </form>
-      <div class="d-flex align-items-center justify-content-center pb-4">
+                        <div class="d-flex align-items-center justify-content-center pb-4">
                           <p class="mb-0 me-2">New Patient?</p>
-                          <button type="button" class="btn btn-outline-danger">Create new</button>
+                          <button type="button" id="createBtn" class="open-button btn-outline-danger">Create new</button>
+                          
                         </div>
                     </div>
                   </div>
@@ -60,7 +62,7 @@
           </div>
         </div>
       </section>
-
+      
 
 </body>
 </html>

@@ -30,39 +30,20 @@ app.get("/patients", (req, res) => {
     console.log('is working')
 });
 
-// app.get("/patients/:id", (req, res) => {
-//     const id = req.params.id;
+app.get("/patients/:id", (req, res) => {
+    const id = req.params.id;
 
-//     sql`SELECT * FROM patients WHERE id = ${id}`.then((result) => {
-//         if (result.length !== 0) {
-//             res.json(result[0]);
-//         } else {
-//             res.status(404);
-//             res.set("Content-Type", "text/plain");
-//             res.send("Not Found");
-//         };
-//     })
-// });
-
-app.post("/patients/home", (req, res) => {
-    sql`SELECT * FROM patients WHERE username = 'michelle.obama'`
-    .then((result) => {
-        const first_name = result[0].first_name.charAt(0).toUpperCase() + result[0].first_name.slice(1);
-        console.log(loggedin)
-        //res.json(req.session.loggedin)
-        if (loggedin) {
-            let message = {
-            welcome: `Welcome ${first_name}!`,
-            result: result[0]
-        }
-		res.json(message);
-	} else {
-		// Not logged in
-		res.json('Please login to view this page!');
-	}
-})
-	//res.end();
+    sql`SELECT * FROM patients WHERE id = ${id}`.then((result) => {
+        if (result.length !== 0) {
+            res.json(result[0]);
+        } else {
+            res.status(404);
+            res.set("Content-Type", "text/plain");
+            res.send("Not Found");
+        };
+    }) 
 });
+
 
 app.post("/patients", (req, res) => {
     const { first_name, last_name, date_of_birth, username, password } = req.body;
@@ -75,29 +56,6 @@ app.post("/patients", (req, res) => {
 });
 
 
-app.post("/patients/auth", function(req, res) {
-console.log(req.body)
-    const { username, password } = req.body;
-	if (username && password) {
-        sql`SELECT * FROM patients WHERE username = ${username}`.then((results) => {
-            if (results[0].username === username && results[0].password === password) {
-				// Authenticate the user
-                sql`UPDATE patients SET online = true WHERE username =${username}`.then((result) => {
-                loggedin = true;
-				req.session.username = username;
-                })
-				res.redirect(307, `/patients/home`);
-
-			} else {
-				res.json('Incorrect Username and/or Password!');
-			}			
-			res.end();
-		});
-	} else {
-		res.json('Please enter Username and Password!');
-		res.end();
-	}
-});
 
 app.patch("/patients/:id", (req, res) => {
     const id = req.params.id;

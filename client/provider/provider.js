@@ -11,21 +11,22 @@ loginInput.addEventListener("submit", (event) => {
     const { username, password } = login;
     console.log(data)
 
-    fetch("http://localhost:3000/providers/auth", {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "username": `${username}`,
-            "password": `${password}`
-          })
-      })
-      .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        window.open("provider_profile.html")
-    });
- }); 
+  fetch("http://localhost:3000/providers/auth", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+          "username": `${username}`,
+          "password": `${password}`
+        })
+    })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);   
+    window.open("provider_profile.html")
+  });
+}); 
  
 
+// client/

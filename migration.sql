@@ -48,3 +48,15 @@ INSERT INTO screens (date, patient_id, height, weight, provider_id) VALUES ('202
 
 -- INSERT INTO BMI (date, patient_id, bmi, lean) VALUES (2022-12-14, 1, 10);
 -- INSERT INTO BMI (date, patient_id, bmi, lean) VALUES (2022-09-23, 2, 25);
+
+-- { 
+--     "date": "2022-06-07",
+--     "patient_id": 1,
+--     "height": 65,
+--     "weight": 180,
+--     "provider_id": 1
+--     }
+
+{
+    online: false
+}
