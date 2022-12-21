@@ -3,28 +3,51 @@
 const loginInput = document.querySelector(".login");
 const welcome = document.querySelector("#welcome");
 
+
+
+
 //=================LOGIN==============================
 loginInput.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const login = { username: data.get("username"), password: data.get("password") };
-    const { username, password } = login;
-    console.log(data)
+  event.preventDefault();
+  const data = new FormData(event.target);
+  const login = { username: data.get("username"), password: data.get("password") };
+  const { username, password } = login;
+  console.log( username,  password)
 
-  fetch("http://localhost:3000/providers/auth", {
-      method: 'POST',
+  fetch("http://localhost:3000/providers", { 
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then((res) => res.json())
+  .then((data) => {
+    const error = document.createElement('div');
+          error.className = 'alert alert-danger';
+          error.setAttribute("role", "alert");
+          loginInput.prepend(error);
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].username === username && data[i].password === password) {
+          fetch(`http://localhost:3000/providers/${data[i].id}`, { 
+      method: 'PATCH',
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-          "username": `${username}`,
-          "password": `${password}`
-        })
+        "online": true
+      })
     })
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);   
-    window.open("provider_profile.html")
+    .then(window.open("provider_profile.html"))
+    location.reload()
+      
+        } else if (data[i].username === username || data[i].password === password){
+          error.textContent = 'Incorrect Username and/or Password!';
+          
+        } else {
+          error.innerHTML = 'Please enter Username and Password!';
+        }
+      };
+      
   });
 }); 
  

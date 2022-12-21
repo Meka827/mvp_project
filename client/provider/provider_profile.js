@@ -5,6 +5,7 @@ const providerSelect = document.querySelector(".provider-select");
 const patientSelect = document.querySelector(".patient-select");
 const proValue = document.querySelector('#provider');
 const patValue = document.querySelector('#patient');
+const logout = document.querySelector(".logout");
 
 const meds = document.querySelector(".meds");
 const visit = document.querySelector(".visit");
@@ -94,64 +95,47 @@ formInput.addEventListener("submit", (event) => {
                     }
                 })
             }
+
+
+            
         }
     });
 
-
-
-   // sql`INSERT INTO screens (date, patient_id, height, weight, provider_id) 
-     //fetch("http://localhost:3000/providers", {
-    //     method: 'POST',
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //         "username": `${username}`,
-    //         "password": `${password}`
-    //       })
-    //   })
-    //   .then((res) => res.json())
-    // .then((data) => {
-    //     console.log(data);
-    //     window.open("provider_profile.html")
-    // });
- }); 
+        
+  
+}); 
 
 //==========VISITS=======================
-
-    // fetch(`http://localhost:3000/screens/${userData[0].id}`)
-    // .then((res) => res.json())
-    // .then((userSreen) => {
-    //     for(let check in userSreen) {
-    //         for(let data in userSreen[check]){
-    //             if(data === 'date'){
-    //                 let date = userSreen[check][data].slice(0, 10);
-    //                 let dateARR = date.split('-');
-    //                 let slashDate = `${dateARR[1]}/${dateARR[2]}/${dateARR[0]}`
-    //                 let div = document.createElement("div");
-    //                 div.textContent = slashDate;
-    //                 visit.append(div);
-    //             } else if(data === 'weight' || data === 'height') {
-    //                 let div = document.createElement("div");
-    //                 div.textContent = userSreen[check][data];
-    //                 visit.append(div);
-    //             } else if (data === 'provider_id') {
-    //                 console.log(data, userSreen[check][data])
-    //                 fetch(`http://localhost:3000/providers/${userSreen[check][data]}`)
-    //                 .then((res) => res.json())
-    //                 .then((result) => {
-    //                     let div = document.createElement("div");
-    //                     div.textContent = `${result.first_name} ${result.last_name}`;
-    //                     visit.append(div);
-    //                 })
-    //             }
-    //         }
-    //     }
-    // })
 
 
 //==========MEDS=========================
 
 
 
-//});
+fetch("http://localhost:3000/providers")
+.then((res) => res.json())
+.then((userData) => {
+    for (let i = 0; i < userData.length; i++) {
+
+        if(userData[i].online) {
+            console.log(userData[i])
+            logout.addEventListener('click', () => {
+
+                fetch(`http://localhost:3000/providers/${userData[i].id}`, {
+                    method: 'PATCH',
+                    headers: {
+                    "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "online": false
+                    })
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                   console.log(data)
+                    window.close("provider_profile.html")
+                });
+            });
+        }
+      }
+    });

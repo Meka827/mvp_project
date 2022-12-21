@@ -222,9 +222,8 @@ app.patch("/screens/:id", (req, res) => {
                 res.send(result[0])
             })
         } else {
-            res.status(404);
-            res.set("Content-Type", "text/plain");
-            res.send("Not Found");
+            
+            res.send([{nope: "Not Found"}]);
         };
     })
 })
